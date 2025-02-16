@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
+
+body {
+  font-family: 'Protest Riot', sans-serif;
+}
+
+.xd3 {
+    width: 100vw;
+    height: 100vh;
+    justify-content: flex-start;
+}
+.text {
+    font-size: 10vh;
+    font-family: 'Protest Riot';
+    color: blueviolet;
+    text-align: center;
+}
+.jogomb {
+    color: white;
+    background: green;
+    height: 10vh;
+    width: 35vw;
+    font-size: 7vh;
+    margin: 2vh;
+    display: inline-flex;
+  align-items: top;
+  justify-content: center;
+}
+.rosszgomb {
+    color: white;
+    background: red;
+    height: 10vh;
+    width: 35vw;
+    font-size: 7vh;
+    margin: 2vh;
+    display: inline-flex;
+  align-items: top;
+  justify-content: center;
+}
