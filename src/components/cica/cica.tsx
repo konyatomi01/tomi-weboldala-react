@@ -5,7 +5,7 @@ import kep from "./cat.png";
 const Cica = () => {
   const [page, setPage] = useState(0);
 
-  const handleNext = (event) => {
+  const handleNext = (event: any) => {
     fetch(
         "https://script.google.com/macros/s/AKfycbyUte_2G7ICmVPKv7zIuE4L4h7ps66aUJxPqaBl34HNqa03K-vMbuurKmYkVz_-ZHdd/exec",
         {
