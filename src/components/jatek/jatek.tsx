@@ -11,8 +11,8 @@ const Jatek = () => {
   const [direction, setDirection] = useState({ dx: 1, dy: 1 });
 
   const handleShot = () => {
-    const target = document.querySelector('.target').getBoundingClientRect();
-    const monster = document.querySelector('.szorny').getBoundingClientRect();
+    const target = document.querySelector('.target')!.getBoundingClientRect();
+    const monster = document.querySelector('.szorny')!.getBoundingClientRect();
     if (
       target.left >= monster.left &&
       target.right <= monster.right &&
