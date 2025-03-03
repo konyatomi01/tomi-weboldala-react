@@ -71,7 +71,7 @@ const Cica = () => {
   };
 
   return (
-    <div>
+    <div className='cica'>
       {renderPage()}
     </div>
   );
