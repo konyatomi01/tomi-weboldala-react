@@ -6,6 +6,7 @@ import Meno from './components/meno/meno';
 import Zita from './components/zita/zita';
 import Cica from './components/cica/cica';
 import Jatek from './components/jatek/jatek';
+import Egyutt from './components/egyutt/egyutt';
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
       <Route path="/zita" element={<Zita />} />
       <Route path="/cica" element={<Cica />} />
       <Route path="/jatek" element={<Jatek />} />
+      <Route path="/egyutt" element={<Egyutt />} />
     </Routes>
   </Router>
 );

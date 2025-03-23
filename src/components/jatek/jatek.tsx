@@ -1,19 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import "./jatek.scss";
 import szorny from "./szorny.png";
 import like from "./like.png";
-import cross from "./cross.svg"
 
 const Jatek = () => {
   const [next, setNext] = useState(false);
-  const [hp, setHp] = useState(5);
+  const [hp, setHp] = useState(20);
   const [position, setPosition] = useState({ x: 50, y: 50 });
   const [direction, setDirection] = useState({ dx: 1, dy: 1 });
 
+  const targetRef = useRef<HTMLDivElement>(null);
+  const monsterRef = useRef<HTMLImageElement>(null);
+
   const handleShot = () => {
-    const target = document.querySelector('.target')!.getBoundingClientRect();
-    const monster = document.querySelector('.szorny')!.getBoundingClientRect();
-    if (
+    const target = targetRef.current?.getBoundingClientRect();
+    const monster = monsterRef.current?.getBoundingClientRect();
+    if (target && monster &&
       target.left >= monster.left &&
       target.right <= monster.right &&
       target.top >= monster.top &&
@@ -29,7 +31,7 @@ const Jatek = () => {
 
   const reset = () => {
     setNext(false);
-    setHp(5);
+    setHp(20);
   };
 
   useEffect(() => {
@@ -37,8 +39,8 @@ const Jatek = () => {
       setPosition((pos) => {
         const newX = pos.x + direction.dx * 2;
         const newY = pos.y + direction.dy * 2;
-        const maxX = 90;
-        const maxY = 80;
+        const maxX = 100;
+        const maxY = 100;
         let dx = direction.dx;
         let dy = direction.dy;
         if (newX <= 0 || newX >= maxX) dx *= -1;
@@ -47,7 +49,7 @@ const Jatek = () => {
         return { x: newX < 0 ? 0 : newX > maxX ? maxX : newX, y: newY < 0 ? 0 : newY > maxY ? maxY : newY };
       });
     };
-    const interval = setInterval(move, 40);
+    const interval = setInterval(move, 20);
     return () => clearInterval(interval);
   }, [direction]);
 
@@ -56,12 +58,13 @@ const Jatek = () => {
       {!next ? (
         <div className='full'>
           <div
+            ref={targetRef}
             className='target'
             style={{ left: `${position.x}%`, top: `${position.y}%` }}
           >
-            <img src={cross} alt="" />
+            dvd
           </div>
-          <img className='szorny' src={szorny} alt='szörny' />
+          <img ref={monsterRef} className='szorny' src={szorny} alt='szörny' />
           <h1 className='red'>Randi ellenes szörny</h1>
           <h1 className='red'>{hp} életerő</h1>
           <button className='shot-button' onClick={handleShot}>Lövés</button>
